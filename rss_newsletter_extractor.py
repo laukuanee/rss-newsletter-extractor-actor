@@ -167,7 +167,24 @@ def run_actor(payload: dict[str, Any]) -> dict[str, Any]:
         url = page["url"]
         html = page.get("html")
         if html is None:
-            html = fetch_public_page(url)
+            try:
+                html = fetch_public_page(url)
+            except Exception as exc:
+                results.append(
+                    {
+                        "source_url": url,
+                        "feeds": [],
+                        "items": [],
+                        "error": str(exc),
+                        "stats": {
+                            "links_seen": 0,
+                            "feeds_found": 0,
+                            "items_found": 0,
+                            "duplicate_links_removed": 0,
+                        },
+                    }
+                )
+                continue
         if not isinstance(html, str):
             raise ValueError(f"Page html must be text for {url}")
         results.append(extract_from_html(url, html))
@@ -176,6 +193,7 @@ def run_actor(payload: dict[str, Any]) -> dict[str, Any]:
         "page_count": len(results),
         "total_feeds": sum(len(page["feeds"]) for page in results),
         "total_items": sum(len(page["items"]) for page in results),
+        "total_errors": sum(1 for page in results if page.get("error")),
         "pages": results,
     }
 

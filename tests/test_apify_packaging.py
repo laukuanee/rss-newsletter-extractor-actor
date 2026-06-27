@@ -33,6 +33,7 @@ class ApifyPackagingTests(unittest.TestCase):
         self.assertIn("record_type", fields)
         self.assertIn("source_url", fields)
         self.assertIn("url", fields)
+        self.assertIn("error", fields)
 
     def test_local_actor_entrypoint_writes_feed_and_item_records(self):
         payload = {
@@ -59,6 +60,24 @@ class ApifyPackagingTests(unittest.TestCase):
             self.assertEqual([record["record_type"] for record in records], ["feed", "item"])
             self.assertEqual(records[0]["url"], "https://example.com/feed.xml")
             self.assertEqual(records[1]["url"], "https://example.com/newsletter/june")
+
+    def test_flatten_records_writes_error_records(self):
+        result = {
+            "pages": [
+                {
+                    "source_url": "https://example.com/missing",
+                    "feeds": [],
+                    "items": [],
+                    "error": "HTTP Error 404: Not Found",
+                }
+            ]
+        }
+
+        records = actor_main.flatten_records(result)
+
+        self.assertEqual(records[0]["record_type"], "error")
+        self.assertEqual(records[0]["source_url"], "https://example.com/missing")
+        self.assertIn("404", records[0]["error"])
 
 
 if __name__ == "__main__":

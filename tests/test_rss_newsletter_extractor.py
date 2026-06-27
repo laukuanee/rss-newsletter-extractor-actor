@@ -66,6 +66,22 @@ class RssNewsletterExtractorTests(unittest.TestCase):
 
         self.assertIn("pages", str(context.exception))
 
+    def test_run_actor_returns_error_page_when_fetch_fails(self):
+        original_fetch = extractor.fetch_public_page
+
+        def failing_fetch(url):
+            raise ValueError("not available")
+
+        try:
+            extractor.fetch_public_page = failing_fetch
+            result = extractor.run_actor({"pages": [{"url": "https://example.com/missing"}]})
+        finally:
+            extractor.fetch_public_page = original_fetch
+
+        self.assertEqual(result["total_errors"], 1)
+        self.assertEqual(result["pages"][0]["source_url"], "https://example.com/missing")
+        self.assertIn("not available", result["pages"][0]["error"])
+
 
 if __name__ == "__main__":
     unittest.main()

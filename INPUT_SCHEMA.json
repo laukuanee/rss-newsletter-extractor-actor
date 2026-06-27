@@ -7,12 +7,13 @@
       "title": "Public pages",
       "type": "array",
       "description": "Public blog, changelog, release, newsletter, or archive pages to inspect.",
-      "editor": "json",
-      "prefill": [
-        {
-          "url": "https://example.com/blog"
-        }
-      ],
+        "editor": "json",
+        "prefill": [
+          {
+            "url": "https://example.com/blog",
+            "html": "<html><head><link rel=\"alternate\" type=\"application/rss+xml\" title=\"RSS\" href=\"/feed.xml\"></head><body><a href=\"/newsletter/june\">June newsletter</a><a href=\"/archive\">Archive</a></body></html>"
+          }
+        ],
       "items": {
         "type": "object",
         "required": ["url"],

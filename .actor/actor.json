@@ -17,7 +17,8 @@
         "editor": "json",
         "prefill": [
           {
-            "url": "https://example.com/blog"
+            "url": "https://example.com/blog",
+            "html": "<html><head><link rel=\"alternate\" type=\"application/rss+xml\" title=\"RSS\" href=\"/feed.xml\"></head><body><a href=\"/newsletter/june\">June newsletter</a><a href=\"/archive\">Archive</a></body></html>"
           }
         ],
         "items": {
@@ -96,6 +97,11 @@
             "type": "integer",
             "title": "Heuristic score",
             "description": "Newsletter/archive/update relevance score for item records."
+          },
+          "error": {
+            "type": "string",
+            "title": "Error",
+            "description": "Fetch or extraction error for pages that could not be processed."
           }
         },
         "required": [
@@ -114,7 +120,8 @@
               "url",
               "type",
               "title",
-              "score"
+              "score",
+              "error"
             ]
           },
           "display": {

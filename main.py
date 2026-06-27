@@ -22,6 +22,8 @@ def flatten_records(result: dict[str, Any]) -> list[dict[str, Any]]:
     records: list[dict[str, Any]] = []
     for page in result["pages"]:
         source_url = page["source_url"]
+        if page.get("error"):
+            records.append({"record_type": "error", "source_url": source_url, "error": page["error"]})
         for feed in page["feeds"]:
             records.append({"record_type": "feed", "source_url": source_url, **feed})
         for item in page["items"]:
