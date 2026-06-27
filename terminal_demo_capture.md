@@ -1,0 +1,56 @@
+# Terminal Demo Capture
+
+## Test Suite
+
+```text
+...
+----------------------------------------------------------------------
+Ran 3 tests in 0.011s
+
+OK
+```
+
+## Sample Output
+
+```json
+{
+  "page_count": 1,
+  "total_feeds": 2,
+  "total_items": 2,
+  "pages": [
+    {
+      "source_url": "https://example.com/blog",
+      "feeds": [
+        {
+          "url": "https://example.com/feed.xml",
+          "type": "rss",
+          "title": "RSS"
+        },
+        {
+          "url": "https://example.com/atom.xml",
+          "type": "atom",
+          "title": "atom"
+        }
+      ],
+      "items": [
+        {
+          "url": "https://example.com/updates/launch",
+          "title": "Launch notes",
+          "score": 2
+        },
+        {
+          "url": "https://example.com/newsletter/june",
+          "title": "June newsletter",
+          "score": 1
+        }
+      ],
+      "stats": {
+        "links_seen": 4,
+        "feeds_found": 2,
+        "items_found": 2,
+        "duplicate_links_removed": 1
+      }
+    }
+  ]
+}
+```

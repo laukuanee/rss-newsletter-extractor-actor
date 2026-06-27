@@ -1,0 +1,8 @@
+{
+  "pages": [
+    {
+      "url": "https://example.com/blog",
+      "html": "<!doctype html><html><head><title>Example Updates</title><link rel=\"alternate\" type=\"application/rss+xml\" title=\"RSS\" href=\"/feed.xml\"><link rel=\"alternate\" type=\"application/atom+xml\" href=\"https://example.com/atom.xml\"></head><body><a class=\"post-card\" href=\"/updates/launch\">Launch notes</a><a href=\"/newsletter/june\">June newsletter</a><a href=\"/about\">About</a><a href=\"/updates/launch\">Duplicate Launch notes</a></body></html>"
+    }
+  ]
+}
