@@ -1,6 +1,6 @@
 # RSS and Newsletter Page Extractor Actor
 
-Status: local MVP seed.
+Status: published on Apify Store.
 
 This utility is the second build candidate from the Utility-to-Usage scanner after the CSV cleanup tool reached a live deployment.
 
@@ -43,7 +43,7 @@ C:\Users\lauku\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\p
 
 Apify packaging files included:
 
-- `apify.json`
+- `.actor/actor.json`
 - `INPUT_SCHEMA.json`
 - `Dockerfile`
 - `main.py`

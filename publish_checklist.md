@@ -12,9 +12,10 @@
 - [x] Add Apify `INPUT_SCHEMA.json`.
 - [x] Add Apify actor wrapper/package metadata.
 - [x] Package and test Apify runtime entrypoint.
-- [ ] Publish Apify Actor when account access is available without hard-stop prompts.
+- [x] Publish Apify Actor when account access is available without hard-stop prompts.
+- [x] Verify public Apify Store page returns `200` and shows the run CTA.
 
 ## Publishing Blockers
 
-- Apify publishing requires an accessible logged-in account/session and no hard-stop prompts.
+- Published on Apify Store: `https://apify.com/eager_vitamin/rss-newsletter-extractor-actor`.
 - Do not enter payment, payout, legal, tax, ID, OTP/MFA, CAPTCHA, or account-security details.
