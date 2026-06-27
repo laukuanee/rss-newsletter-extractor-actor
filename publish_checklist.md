@@ -9,9 +9,10 @@
 - [x] Sample input and output generated.
 - [x] Add marketplace listing copy and pricing draft.
 - [x] Add screenshot or terminal demo capture.
-- [ ] Add Apify `INPUT_SCHEMA.json`.
-- [ ] Add Apify actor wrapper/package metadata.
-- [ ] Package and test Apify runtime entrypoint.
+- [x] Add Apify `INPUT_SCHEMA.json`.
+- [x] Add Apify actor wrapper/package metadata.
+- [x] Package and test Apify runtime entrypoint.
+- [ ] Publish Apify Actor when account access is available without hard-stop prompts.
 
 ## Publishing Blockers
 

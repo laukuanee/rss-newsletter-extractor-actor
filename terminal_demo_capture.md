@@ -3,9 +3,9 @@
 ## Test Suite
 
 ```text
-...
+.....
 ----------------------------------------------------------------------
-Ran 3 tests in 0.011s
+Ran 5 tests in 0.030s
 
 OK
 ```
@@ -53,4 +53,13 @@ OK
     }
   ]
 }
+```
+
+## Apify-Style Dataset Records
+
+```jsonl
+{"record_type": "feed", "source_url": "https://example.com/blog", "title": "RSS", "type": "rss", "url": "https://example.com/feed.xml"}
+{"record_type": "feed", "source_url": "https://example.com/blog", "title": "atom", "type": "atom", "url": "https://example.com/atom.xml"}
+{"record_type": "item", "score": 2, "source_url": "https://example.com/blog", "title": "Launch notes", "url": "https://example.com/updates/launch"}
+{"record_type": "item", "score": 1, "source_url": "https://example.com/blog", "title": "June newsletter", "url": "https://example.com/newsletter/june"}
 ```

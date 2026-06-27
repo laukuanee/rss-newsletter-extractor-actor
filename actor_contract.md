@@ -68,3 +68,29 @@ Fields:
 - Emit each feed and item as dataset records.
 - Add optional depth-1 follow-up discovery for archive pages only.
 - Add a scheduled-monitoring variant after the baseline actor is reliable.
+
+## Dataset Record Shape
+
+Feed record:
+
+```json
+{
+  "record_type": "feed",
+  "source_url": "https://example.com/blog",
+  "url": "https://example.com/feed.xml",
+  "type": "rss",
+  "title": "RSS"
+}
+```
+
+Item record:
+
+```json
+{
+  "record_type": "item",
+  "source_url": "https://example.com/blog",
+  "url": "https://example.com/newsletter/june",
+  "title": "June newsletter",
+  "score": 1
+}
+```

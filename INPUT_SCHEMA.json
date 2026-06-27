@@ -1,0 +1,36 @@
+{
+  "title": "RSS and Newsletter Page Extractor",
+  "type": "object",
+  "schemaVersion": 1,
+  "properties": {
+    "pages": {
+      "title": "Public pages",
+      "type": "array",
+      "description": "Public blog, changelog, release, newsletter, or archive pages to inspect.",
+      "editor": "json",
+      "prefill": [
+        {
+          "url": "https://example.com/blog"
+        }
+      ],
+      "items": {
+        "type": "object",
+        "required": ["url"],
+        "properties": {
+          "url": {
+            "title": "Page URL",
+            "type": "string",
+            "description": "Public page URL."
+          },
+          "html": {
+            "title": "Optional HTML",
+            "type": "string",
+            "description": "Optional saved HTML for offline testing or controlled runs.",
+            "editor": "textarea"
+          }
+        }
+      }
+    }
+  },
+  "required": ["pages"]
+}

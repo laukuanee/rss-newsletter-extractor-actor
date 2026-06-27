@@ -16,9 +16,19 @@ Discover feed and update links from public pages by:
 
 ## Run
 
+Run the extractor CLI:
+
 ```powershell
 C:\Users\lauku\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe .\rss_newsletter_extractor.py --input .\samples\input.json --out .\samples\output.json
 ```
+
+Run the Apify-style local entrypoint:
+
+```powershell
+C:\Users\lauku\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe .\main.py
+```
+
+That writes newline-delimited records to `storage/datasets/default/records.jsonl`.
 
 ## Test
 
@@ -30,6 +40,13 @@ C:\Users\lauku\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\p
 
 - First target: Apify Actor.
 - Later variant: hosted monitor that runs scheduled checks and emits changed feeds/items.
+
+Apify packaging files included:
+
+- `apify.json`
+- `INPUT_SCHEMA.json`
+- `Dockerfile`
+- `main.py`
 
 ## Risk Boundary
 
