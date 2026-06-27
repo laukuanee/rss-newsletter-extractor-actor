@@ -23,6 +23,17 @@ class ApifyPackagingTests(unittest.TestCase):
         self.assertIn("pages", schema["properties"])
         self.assertEqual(schema["properties"]["pages"]["type"], "array")
 
+    def test_actor_manifest_defines_store_metadata_and_dataset_view(self):
+        manifest = json.loads((ROOT / ".actor" / "actor.json").read_text(encoding="utf-8"))
+
+        self.assertEqual(manifest["name"], "rss-newsletter-extractor-actor")
+        self.assertEqual(manifest["dockerfile"], "../Dockerfile")
+        self.assertEqual(manifest["input"]["properties"]["pages"]["type"], "array")
+        fields = manifest["storages"]["dataset"]["fields"]["properties"]
+        self.assertIn("record_type", fields)
+        self.assertIn("source_url", fields)
+        self.assertIn("url", fields)
+
     def test_local_actor_entrypoint_writes_feed_and_item_records(self):
         payload = {
             "pages": [

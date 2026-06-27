@@ -1,0 +1,128 @@
+{
+  "actorSpecification": 1,
+  "name": "rss-newsletter-extractor-actor",
+  "title": "RSS and Newsletter Page Extractor",
+  "description": "Find RSS, Atom, JSON feed links, and likely newsletter/archive update links from public pages.",
+  "version": "0.1",
+  "buildTag": "latest",
+  "input": {
+    "title": "RSS and Newsletter Page Extractor",
+    "type": "object",
+    "schemaVersion": 1,
+    "properties": {
+      "pages": {
+        "title": "Public pages",
+        "type": "array",
+        "description": "Public blog, changelog, release, newsletter, or archive pages to inspect.",
+        "editor": "json",
+        "prefill": [
+          {
+            "url": "https://example.com/blog"
+          }
+        ],
+        "items": {
+          "type": "object",
+          "required": [
+            "url"
+          ],
+          "properties": {
+            "url": {
+              "title": "Page URL",
+              "type": "string",
+              "description": "Public page URL."
+            },
+            "html": {
+              "title": "Optional HTML",
+              "type": "string",
+              "description": "Optional saved HTML for offline testing or controlled runs.",
+              "editor": "textarea"
+            }
+          }
+        }
+      }
+    },
+    "required": [
+      "pages"
+    ]
+  },
+  "output": {
+    "actorOutputSchemaVersion": 1,
+    "title": "RSS and newsletter extraction results",
+    "description": "Default dataset containing discovered feed records and likely newsletter or update links.",
+    "type": "object",
+    "properties": {
+      "results": {
+        "type": "string",
+        "title": "Results",
+        "description": "Default dataset records produced by the actor.",
+        "template": "{{links.apiDefaultDatasetUrl}}/items"
+      }
+    }
+  },
+  "storages": {
+    "dataset": {
+      "actorSpecification": 1,
+      "fields": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "additionalProperties": true,
+        "properties": {
+          "record_type": {
+            "type": "string",
+            "title": "Record type",
+            "description": "Either feed for a declared feed URL or item for a likely newsletter/archive/update link."
+          },
+          "source_url": {
+            "type": "string",
+            "title": "Source URL",
+            "description": "Public page that was inspected."
+          },
+          "url": {
+            "type": "string",
+            "title": "Discovered URL",
+            "description": "Absolute URL for the feed or likely update item."
+          },
+          "type": {
+            "type": "string",
+            "title": "Feed type",
+            "description": "rss, atom, json-feed, or json for feed records."
+          },
+          "title": {
+            "type": "string",
+            "title": "Title",
+            "description": "Feed title or link text."
+          },
+          "score": {
+            "type": "integer",
+            "title": "Heuristic score",
+            "description": "Newsletter/archive/update relevance score for item records."
+          }
+        },
+        "required": [
+          "record_type",
+          "source_url",
+          "url"
+        ]
+      },
+      "views": {
+        "overview": {
+          "title": "Overview",
+          "transformation": {
+            "fields": [
+              "record_type",
+              "source_url",
+              "url",
+              "type",
+              "title",
+              "score"
+            ]
+          },
+          "display": {
+            "component": "table"
+          }
+        }
+      }
+    }
+  },
+  "dockerfile": "../Dockerfile"
+}
