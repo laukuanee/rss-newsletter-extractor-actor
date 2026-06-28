@@ -27,8 +27,8 @@ Many feed tools either require manual lookup or try to crawl too broadly. This M
 
 ## Pricing Draft
 
-- Free/evaluation: small page batches.
-- Starter: scheduled checks for a modest number of public pages.
-- Bulk/monitoring: higher page limits and historical change exports.
+- Apify launch setting: keep `Try for free` enabled and choose the lowest available usage-based paid tier in the Store UI/API.
+- Buyer-facing anchor: price this as a feed-discovery utility, not a broad crawler; target low-cost scheduled checks for public pages.
+- Fast-sale limit: keep default run limits modest and upsell only after there is usage signal.
 
-Public pricing and any support/availability claims need approval before marketplace publication.
+Launch pricing is approved for fast-sale testing. Marketplace publication still requires reliable editor/API access, and any payment, tax, legal, security, OTP/MFA, CAPTCHA, or contract prompt remains a hard stop.
