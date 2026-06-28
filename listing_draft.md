@@ -27,8 +27,10 @@ Many feed tools either require manual lookup or try to crawl too broadly. This M
 
 ## Pricing Draft
 
-- Apify launch setting: keep `Try for free` enabled and choose the lowest available usage-based paid tier in the Store UI/API.
+- Apify launch setting: keep `Try for free` enabled.
+- Preferred paid model: pay-per-event at USD 0.01 per successful feed URL or update-link record when the platform permits it.
+- Fallback paid model: lowest platform-permitted paid usage tier if event pricing is unavailable.
 - Buyer-facing anchor: price this as a feed-discovery utility, not a broad crawler; target low-cost scheduled checks for public pages.
-- Fast-sale limit: keep default run limits modest and upsell only after there is usage signal.
+- Fast-sale limit: keep default run limits modest and raise pricing only after repeated scheduled-task usage appears.
 
 Launch pricing is approved for fast-sale testing. Marketplace publication still requires reliable editor/API access, and any payment, tax, legal, security, OTP/MFA, CAPTCHA, or contract prompt remains a hard stop.
